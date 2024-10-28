@@ -1,0 +1,692 @@
+* {
+  box-sizing: border-box;
+  line-height: normal;
+}
+body {
+  font-family: "Roboto", sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+.dhiwise-code,
+.dhiwise-navigation {
+  min-height: 100%;
+}
+.common-pointer {
+  cursor: pointer;
+}
+.dhiwise-navigation {
+  padding: 20px;
+  background-color: #232323;
+}
+.dhiwise-navigation h1 {
+  color: white;
+}
+.dhiwise-navigation .headline {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: white;
+}
+.dhiwise-navigation ul {
+  padding: 0;
+}
+.dhiwise-navigation ul li {
+  list-style: none;
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.dhiwise-navigation a {
+  color: #132cdc;
+}
+table {
+  border-spacing: 0;
+  width: 100%;
+}
+.common-select {
+  z-index: 10000;
+}
+.react-datepicker-popper {
+  z-index: 100000 !important;
+}
+.drawable-icon{
+  position: absolute;
+  margin: auto;
+  z-index: 1000;
+}
+.input-wrap{
+  position: relative;
+}
+option{
+  color: #000;
+}
+.table-wrap{
+  overflow: auto;
+}
+input:focus{
+  outline:none;
+}
+.ReactModal__Body--open{
+  overflow: hidden;
+}
+  .slider-indicator:first-child {
+    margin-left: 0;
+}
+
+.slider-indicator:last-child {
+margin-right: 0;
+}
+
+.rc-drawer-content-wrapper{
+  width: 100% !important;
+}
+.rc-drawer-right .rc-drawer-content-wrapper{
+  display: flex;
+  justify-content: flex-end;
+}
+.rc-drawer-left .rc-drawer-content-wrapper{
+  display: flex;
+  justify-content: flex-start;
+}
+.ReactModal__Overlay{
+  z-index: 1051;
+}
+
+ul li a{
+  display: block;
+}
+
+.mobile-menu div{
+  height: 1.5px;
+  width: 20px;
+  background-color: #000;
+  margin:4px 0;
+}
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+}
+.header-row{
+  align-items:center;
+  justify-content: space-between;
+  display: flex;
+}
+@media only screen and (min-width: 200px) and (max-width: 550px)  {
+  .mobile-menu {
+    display: block;
+  }
+  .header-row{
+    width: 100% !important;
+  }
+  .display-block{
+    display: block;
+  }
+  .display-none{
+    display: none;
+  }
+  .common-row-list > ul{
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-wrap: wrap;
+  }
+}
+.menu-close-icon {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+.menu-overlay{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+.close-line1{
+  transform: translate(0, 6px) rotate(-45deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+.close-line2{
+  transform: translate(0, 0) rotate(45deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+.common-row-list > ul{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  flex-grow: 1;
+}
+
+.common-column-list > ul{
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.common-column-list li{
+  width: 100%;
+}
+
+/* scroll */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#004c23;
+  border-radius: 2px;
+}
+
+.above-all{
+  z-index: 999;
+}
+
+.main-content {
+  transition: width 0.3s ease;
+}
+
+.expanded-width {
+  width: calc(100% - 4rem); /* Adjust this value according to your collapsed sidebar width */
+}
+
+
+
+
+
+
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(255, 255, 255); /* Black fallback color */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  opacity: 0;
+  transition: width 0.3s, opacity 0.3s;
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 0; /* 25% from the top */
+  width: 100%; /* 100% width */
+  margin-top: 50px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #0e0d0d;
+  display: block; /* Display block instead of inline */
+  transition: 0.5s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay.open {
+  width: 100%; /* When open, set width to 100% */
+  opacity: 1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  font-size: 40px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 18px;
+    top: 10px;
+    right: 25px;
+  }
+}
+
+th{
+  height: 70px;
+}
+
+td{
+  height: 50px;
+  text-align: center;
+}
+
+tr:nth-child(odd) {background-color: #f2f2f2;}
+
+.example {
+ 
+  
+  box-shadow: 0px 0px 2px 0px #0f0e0e;
+}
+
+.my-auto{
+  overflow-y: auto;
+}
+
+
+.bg-image{
+  background-image: url("/public/images/dashboard-image.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+
+.header{
+  color: whitesmoke;
+  font-family: "Lora", serif;
+  text-align: center;
+}
+
+
+
+.align{
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.login{
+  color: #696969;
+  background-color: #f3f7ff;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+
+.labels1{
+  background-color: #f3f7ff;
+}
+
+.link-labels{
+  font-size: 15px;
+  color: #2f3045;
+  font-weight: 600;
+}
+
+.search-box{
+  background-color: #637db3;
+}
+
+.big-searchBox{
+  text-align: center;
+}
+
+.primary-color{
+  background-color: #924dff;
+}
+
+.login2{
+  color: #696969;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  
+}
+
+.amenities{
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #151515;
+
+}
+
+.right-start{
+  text-align: left;
+}
+
+.black-color1{
+  color: #2f3045;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.thin-line{
+  width: 1px;
+  height: 40px;
+  background-color: rgba(105, 105, 105, 0.2);
+  
+}
+
+.thin-line-longer{
+  width: 1px;
+  height: 200px;
+  background-color: rgba(105, 105, 105, 0.2);
+  
+  
+}
+
+.thin-line-horizontal{
+  width: 100%;
+  height: 1px;
+  background-color: rgba(105, 105, 105, 0.2);
+  
+}
+
+.thin-line-horizontal-footer{
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  
+}
+
+.bg-color{
+  background-color: #f8f9fa;
+}
+
+.bottom-headings{
+  font-size: 18px;
+  color: #2f3045;
+  font-weight: 700;
+  
+}
+
+
+
+.price{
+  color: #2f3045;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+
+.checkbox-texts{
+  font-family: "Laso", sans-serif;
+}
+
+.text-color-white{
+  color: white;
+}
+
+.footer-container{
+  background-color: #252525;
+  
+}
+
+.design-before-footer{
+  margin: auto;
+  height: 100%;
+  width: 90%;
+  padding: 20px;
+  
+}
+
+@media screen and (min-width: 768px){
+  .design-before-footer{
+  margin: auto;
+  height: 300px;
+  width: 900px;
+  }
+}
+
+.subscribe{
+  font-weight: 700;
+  font-size: 35px;
+  font-family: "lora", serif;
+  text-align: center;
+}
+
+.sign-up{
+  text-align: center;
+}
+
+.email-bar{
+  
+  border-radius: 5px;
+  border:  1px solid #e5e5e5;
+  text-align:left ;
+  margin: auto;
+  
+}
+
+.small-color-circle{
+  background-color: #6630bd;
+}
+
+footer{
+  color: white;
+}
+
+.footer-content{
+  color: #b9baca;
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+
+
+
+
+
+.hostel-img{
+  width: 400px;
+  height: 300px;
+}
+.book-now{
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.hostel-list{
+  min-height: 80%;
+}
+
+@media screen and (max-width: 768px){
+.button-orange-color{
+background-color: orangered;
+}
+.subscribe{
+  font-size: 23px;
+ 
+}
+.sign-up{
+  font-size: 15px;
+}
+
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1%;
+  z-index: 1000; /* Ensure it appears above other content */
+  background-color: white; /* Optional: Change background color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.overlap{
+  z-index: 2000;
+}
+
+
+
+
+
+
+.active-button{
+  color: #004c23;
+}
+
+.labels{
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f3045;
+  font-family: "Lato", sans-serif;
+}
+
+.hostel-names{
+  font-size: 23px;
+  margin-bottom: 8px;
+  color: #2f3045;
+  font-weight: 700;
+  font-family: "Lora", serif;
+}
+
+.new-price{
+  font-size: 20px;
+  font-weight: 700;
+  color: #2f3045;
+}
+
+            
+.hostel-profile{
+  font-size: 16px;
+  color: #696969;
+  font-family: "Lato", sans-serif;
+}
+
+.line-height{
+  line-height: 1.8;
+}
+
+@media screen and (min-width: 768px){
+  .hostel-img{
+    width: 400px;
+    height: 250px;
+  }
+  .big-screen-labels{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .labels{
+    font-size: 18px;
+    font-weight: 600;
+    color: #2f3045;
+    font-family: "Lato", sans-serif;
+    
+  }
+
+ .hostel-names{
+    font-size: 35px;
+   
+  }
+  .login2{
+    color: #696969;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+  .new-price{
+    font-size: 25px;
+    font-weight: 700;
+    
+  }
+  .hostel-profile{
+    font-size: 17px;
+  }
+  .hostel-manager{
+    font-size: 20px;
+    font-weight: 700;
+
+  }
+
+  .ori-hostel-manager{
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+  }
+
+}
+
+.hostel-manager{
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+.green-color{
+  background-color: #004C23;
+}
+
+
+.light-green{
+  background-color: #00a652;
+}
+
+
+.room-box {
+  transition: background-color 0.3s, color 0.3s;
+  color: green;
+}
+
+.room-box:hover {
+  background-color: #004C23;
+  color: white;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in[src] {
+  opacity: 1; /* Trigger fade-in when src is set */
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 5000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 4999;
+}
+
+
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
