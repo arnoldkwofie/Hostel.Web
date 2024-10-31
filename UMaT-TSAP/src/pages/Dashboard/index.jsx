@@ -71,12 +71,12 @@ const Dashboard = () => {
         />
       </div>
 
-      <div className="relative bg-gray-100 col-span-2 items-center justify-start md:ml-[0] w-full">
+      <div className=" bg-gray-100 col-span-2 items-center justify-start md:ml-[0] w-full">
         <div>
            <StudentProfile /> 
         </div>
 
-        <div className="md:mt-[7%] ">
+        <div className="mt-[1%] pb-5">
           {renderContent()}
         </div>
         <Footer />

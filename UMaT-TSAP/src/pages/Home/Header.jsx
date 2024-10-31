@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import LoginPopup from "components/Modal";
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  // Function to toggle dropdown visibility
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
@@ -36,12 +38,20 @@ function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  function Login() {
+      setShowModal(true);
+  }
+
+  const closeModal = () => {
+    setShowModal(false); // Close the modal
+  };
+
   return (
     <div className="">
       <div className="login flex p-2 md:justify-end justify-center ">
         <div className="flex pr-5 pt-1 ">
           <img src="images/login.png" className="h-6 pr-1 cursor-pointer" />
-          <p className="pr-1 cursor-pointer">Login</p>
+          <p className="pr-1 cursor-pointer"  onClick={() => Login()}>Login</p>
         
         </div>
      
@@ -70,46 +80,20 @@ function Header() {
         </div>
       </div>
       <div className="flex justify-between md:justify-around mt-7 mb-7 ml-5 mr-5 md:ml-0 md:mr-0">
-        <div>
+       
       
-        <img
-          src="images/UMaT-Logo-dark.png"
-        />
+      <img 
+    src="images/UMaT-Logo-dark.png" 
+    className="" 
+    alt="UMaT Logo" 
+/>
 
-        </div>
+
         <div
           className="md:hidden cursor-pointer z-50 absolute top-18 right-5  "
           onClick={toggleMobileMenu}
         >
-          
-          {/* <img
-            src="images/menu-icon.png"
-            className="h-6 w-6 mr-4 "
-            alt="Menu Icon"
-          />
-          {isMobileMenuOpen && (
-            <div className="absolute top-18 right-0  bg-gray-50 mt-1 shadow-md w-30 ">
-              
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-              >
-                Item 1
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-              >
-                Item 2
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-              >
-                Item 3
-              </a>
-            </div>
-          )} */}
+        
         </div>
         <div className="hidden md:flex items-center link-labels">
           <div className="flex items-center link-labels relative">
@@ -168,12 +152,15 @@ function Header() {
              
                 <div className="relative">
                   <div className="cursor-pointer flex">
-                    <p className="pr-10">Home</p>
-                    <p className="pr-10">Hostels</p>
-                    <p className="pr-10">Apartments</p>
-                    <p className="pr-10">Facilities</p>
-                    <p className="pr-10">FAQs</p>
-                    <p className="pr-10">Help Desk</p>
+                    
+
+                    <Link to="/" className="pr-10">Home</Link>
+                    <Link to="/About" className="pr-10">About</Link>
+                    <Link to="/" className="pr-10">Hostels</Link>
+                    <Link to="/" className="pr-10">Apartments</Link>
+                    <Link to="/" className="pr-10">Facilities</Link>
+                    <Link to="/Faqs" className="pr-10">FAQs</Link>
+                    <Link to="/HelpDesk" className="pr-10">Help Desk</Link>
                     
                   </div>
                 </div>
@@ -200,6 +187,7 @@ function Header() {
         </div>
         </div>
       </div>
+      {showModal && <LoginPopup onClose={closeModal} />}
     </div>
   );
 }

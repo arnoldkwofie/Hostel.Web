@@ -1,52 +1,35 @@
 import React from "react"
-
+import { Link } from 'react-router-dom';
 
 function Footer(){
-    return <footer className="w-full mt-10 fixed md:relative bottom-0 left-0">
+    return <footer className="w-full mt-10  md:relative bottom-0 left-0">
             <section class="bg-white-A700">
               <div class="max-w-screen-l px-4 mx-auto space-y-1  overflow-hidden sm:px-6 lg:px-8">
                 <nav class=" flex flex-wrap justify-center mt-10">
                   <div class="px-5 py-1">
-                    <a
-                      href="https://www.google.com"
+                    <Link to="/About"
                       class="text-base leading-6 text-gray-500 hover:text-gray-900"
                     >
-                      UMaT-TSAP
-                    </a>
+                      H-Manager
+                      </Link>
                   </div>
                   <div class="px-5 py-1">
-                    <a
-                      href="#"
+                    <Link to="/Faqs"
                       class="text-base leading-6 text-gray-500 hover:text-gray-900"
                     >
-                      About
-                    </a>
+                      FAQs
+                    </Link>
                   </div>
-                  <div class="px-5 py-1">
-                    <a
-                      href="#"
-                      class="text-base leading-6 text-gray-500 hover:text-gray-900"
-                    >
-                      Dev Team
-                    </a>
-                  </div>
+                  
 
                   <div class="px-5 py-1">
-                    <a
-                      href="#"
+                    <Link to="/HelpDesk"
                       class="text-base leading-6 text-gray-500 hover:text-gray-900"
                     >
-                      Contact
-                    </a>
+                      HelpDesk
+                      </Link>
                   </div>
-                  <div class="px-5 py-1">
-                    <a
-                      href="#"
-                      class="text-base leading-6 text-gray-500 hover:text-gray-900"
-                    >
-                      Learn More
-                    </a>
-                  </div>
+                 
                 </nav>
                 <div class="flex justify-center mt-8 space-x-6">
                   <a href="#" class="text-gray-400 hover:text-gray-500">
@@ -122,7 +105,7 @@ function Footer(){
                   </a>
                 </div>
                 <p class="mt-8 text-base leading-6 text-center text-gray-400">
-                  © 2024 UMaT Dev Team, Inc. All rights reserved.
+                  © 2024 UMaT-ICT. All rights reserved.
                 </p>
               </div>
             </section>

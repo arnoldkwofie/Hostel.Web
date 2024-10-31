@@ -177,3 +177,30 @@ export interface BookingData {
   expiryDate: Date
   confirmtionDate: Date
 }
+
+export interface OrderItem {
+  id: number;
+  name: string;
+  description: string;
+  amount: number;
+  quantity: number;
+}
+
+export interface Order {
+  studentNumber: string;
+  phoneVerificationId: number;
+  phoneNumber: string;
+  orderType: number;
+  lastName: string;
+  otherNames: string;
+  email: string;
+  orderItems: OrderItem[];
+  deliveryAddressCostId: number;
+  deliveryMode: number;
+  description: string;
+  channelType: number;
+}
+
+export interface Payload {
+  payload: Order;
+}

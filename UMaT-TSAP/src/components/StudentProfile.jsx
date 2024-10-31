@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Img, Line, Text } from "components";
 import { useNavigate } from "react-router-dom";
 
+
 function StudentProfile() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
@@ -17,11 +19,26 @@ function StudentProfile() {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 576);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+    
+
+  }, []); 
 
 
  const navigate = useNavigate();
@@ -37,14 +54,19 @@ function StudentProfile() {
   var userDetails = JSON.parse(userDetailsString);
   
   return (
-    <div className="example flex absolute top-0 right-0 justify-end bg-white-A700 font-poppins md:w-[100%] w-[80%] h-15 pb-[1%]">
+    <div className=" flex relative top-0 right-0 justify-end bg-white-A700 font-poppins md:w-[100%] w-[100%] h-15 pb-[1%] z-10">
       <div className="items-center md: cursor-pointer" onClick={toggleDropdown}>
-        <Text className="mt-[10%] text-[15px] text-blue_gray-900" size="txtPoppinsBold25">
+        {!isMobile && (
+          <>
+          <Text className="mt-[10%] text-[15px] text-blue_gray-900" size="txtPoppinsBold25">
           Hi' {userDetails.name}
-        </Text>
-        <Text className="top-10 text-teal-900 text-sm">
+          </Text>
+          <Text className="top-10 text-teal-900 text-sm">
           Student
-        </Text>
+          </Text>
+          </>
+        )}
+        
       </div>
       <div className="mt-4 cursor-pointer" onClick={toggleDropdown}>
         <Img

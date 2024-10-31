@@ -35,7 +35,7 @@ const HostelList: React.FC = () => {
   return (
     <>
       {isVisible ? (
-        <div className="grid grid-cols-1  md:pl-8 pl-0">
+        <div className="grid grid-cols-1 ">
           {hostelData.map((hostel) => (
             <HostelComponent
               key={hostel.id}

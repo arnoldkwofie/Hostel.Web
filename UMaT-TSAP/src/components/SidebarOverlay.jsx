@@ -800,8 +800,8 @@ function SidebarOverlay() {
     <div>
       <div
         id="myNav"
-        className={`overlay ${isOpen ? 'open' : ''}`}
-        style={{ width: isOpen ? '100%' : '0' }}
+        className={`overlay  ${isOpen ? 'open' : ''}`}
+        style={{ width: isOpen? '100%' : '0' }}
       >
         <button className="closebtn" onClick={closeNav}>
           &times;
@@ -813,7 +813,7 @@ function SidebarOverlay() {
                 className="ml-[10%] h-[35px]"
               ></img>
               <Text className="ml-[5%] umat-logo text-[29px] text-shadow-ts">
-                UMaT - TSAP
+               <span className="text-yellow-100">H-Manager</span> 
               </Text>
             </div>
             <Line className="bg-black-900_33 h-px mt-[20px] w-full" />
@@ -874,7 +874,7 @@ function SidebarOverlay() {
               </div>
             </div>
             <div className="absolute top-[155%] w-full mb-0">
-              <footer className="bg-gray-100 w-full p-0 ">
+              <footer className=" w-full p-0 " style={{background:'#424141'}}>
                 <section class="">
                   <div class="max-w-screen-l px-1 mx-auto  overflow-hidden sm:px-6 lg:px-8">
                     <nav class=" flex flex-wrap justify-center">
@@ -954,7 +954,7 @@ function SidebarOverlay() {
                       </a>
                     </div>
                     <p class="mt-8 text-base leading-6 text-center text-gray-400">
-                      © 2024 UMaT Dev Team, Inc. All rights reserved.
+                      © 2024 UMaT-ICT. All rights reserved.
                     </p>
                   </div>
                 </section>

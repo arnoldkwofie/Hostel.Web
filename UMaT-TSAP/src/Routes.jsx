@@ -65,7 +65,9 @@ import ConfirmRoomBook from "pages/Dashboard/ConfirmRoomBook";
 import RoomMates from "pages/Dashboard/RoomMates";
 import Transactions from "pages/Dashboard/Transactions";
 import KeyLog from "pages/Dashboard/KeyLog";
-
+import Faqs from "pages/Faqs";
+import HelpDesk from "pages/HelpDesk";
+import About from "pages/About";
 
 
 const ProjectRoutes = () => {
@@ -77,7 +79,9 @@ const ProjectRoutes = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/HostelPages" element={<HostelPages />} />
-
+          <Route path="/Faqs" element={<Faqs />} />
+          <Route path="/HelpDesk" element={<HelpDesk />} />
+          <Route path="/About" element={<About />} />
            <Route path="/Dashboard" element={<AuthGuard isAuthenticated={isAuthenticated}><Dashboard /></AuthGuard>} /> 
            <Route path="/Booked" element={<AuthGuard isAuthenticated={isAuthenticated}><Booked /></AuthGuard>} /> 
            <Route path="/Confirmed" element={<AuthGuard isAuthenticated={isAuthenticated}><Confirmed /></AuthGuard>} />

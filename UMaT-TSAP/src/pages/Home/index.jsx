@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "./Header";
 
 import Container from "./Container";
 import SelectionCheckBox from "./SelectionCheckBox";
@@ -23,8 +24,9 @@ function Home() {
 
   return (
     <div className="overall-container">
+       <Header />
       <Container />
-        <div className="md:flex w-full justify-center w-full mt-20 pl-[10%] pr-[10%] mb-20"></div>
+       
       <NewFooter />
     </div>
   );

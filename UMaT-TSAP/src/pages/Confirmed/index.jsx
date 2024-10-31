@@ -47,7 +47,7 @@ const Confirmed = () => {
            <StudentProfile /> 
         </div>
 
-        <div className="md:mt-[7%] ">
+        <div className="mt-[5%] ">
           <ConfirmedMessage />
         </div>
         <Footer />

@@ -76,7 +76,7 @@ const Sidebar1 = (props) => {
                   }
                 >
                   <Text className="umat-logo text-[25px] w-full text-shadow-ts">
-                    UMaT - HMS
+                    H-Manager
                   </Text>
                 </MenuItem>
               </Menu>

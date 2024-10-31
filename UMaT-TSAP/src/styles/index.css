@@ -230,19 +230,21 @@ ul li a{
   padding: 8px;
   text-decoration: none;
   font-size: 20px;
-  color: #0e0d0d;
+  color: white;
   display: block; /* Display block instead of inline */
   transition: 0.5s; /* Transition effects on hover (color) */
 }
 
 /* When you mouse over the navigation links, change their color */
 .overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
+  color: #fccb90;
 }
 
 .overlay.open {
   width: 100%; /* When open, set width to 100% */
   opacity: 1;
+  background-color: #575454;
+ 
 }
 
 /* Position the close button (top right corner) */
@@ -251,6 +253,7 @@ ul li a{
   top: 0px;
   right: 25px;
   font-size: 40px;
+  color: white;
 }
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
@@ -664,6 +667,7 @@ background-color: orangered;
   bottom: 0;
   background: rgba(0, 0, 0, 0.75);
   z-index: 4999;
+  
 }
 
 

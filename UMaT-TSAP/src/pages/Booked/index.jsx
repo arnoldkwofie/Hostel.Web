@@ -48,7 +48,7 @@ const Booked = () => {
            <StudentProfile /> 
         </div>
 
-        <div className="md:mt-[7%] ">
+        <div className="mt-[5%] ">
           <BookedMessage />
         </div>
         <Footer />

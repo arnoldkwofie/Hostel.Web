@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import {BookingService} from "components/Services/BookingService";
+
+import {OrderService} from "components/Services/OrderService";
+ import {BookingService} from "components/Services/BookingService";
+
+
 
 
 const MobileMoneyPaymentForm = () => {
     const [mobileNumber, setMobileNumber] = useState('');
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
+    const [name, setName]=useState('');
+    const [studentNumber, setStudentNumber] =useState('');
+    const [itemId, setItemId]=useState(0);
+    const [hostel, setHostel] =useState('')
+    const [isLoading, setIsLoading] = useState(false);
+    
+ 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
+        setIsLoading(true);
         setError('');
 
         // Basic validation
@@ -22,8 +34,42 @@ const MobileMoneyPaymentForm = () => {
             return;
         }
 
-        // Submit the form (replace with actual submission logic)
-        alert(`Submitting payment of ${amount} to ${mobileNumber}`);
+
+
+        const orderModel ={
+            studentNumber: studentNumber,
+            phoneVerificationId: 0,
+            phoneNumber: mobileNumber,
+            orderType: 4,
+            lastName: name,
+            otherNames: '',
+            email: '',
+            orderItems: [
+              {
+                id:itemId,
+                name: hostel,
+                description: hostel,
+                amount: amount,
+                quantity: 1,
+              },
+            ],
+            deliveryAddressCostId: 0,
+            deliveryMode: 0,
+            description: '',
+            channelType: 1,
+          };
+
+          console.log(orderModel);
+
+            var response = await OrderService.sendOrderToApi(orderModel);
+            
+        //   //await new Promise(resolve => setTimeout(resolve, 2000));
+           if (response.isSuccessful) {
+                window.location.href=response.url;
+             }
+
+       setIsLoading(false);
+        
     };
 
 
@@ -31,6 +77,9 @@ const MobileMoneyPaymentForm = () => {
         try {
             const data = await BookingService.getBooking();
             setAmount(data.amount);
+            setHostel(data.hostel);
+
+            
         } catch (error) {
             console.error("Error fetching booking:", error);
         }
@@ -43,8 +92,22 @@ const MobileMoneyPaymentForm = () => {
         if (storedUserData) {
           const userData = JSON.parse(storedUserData);
            setMobileNumber(userData.phoneNumber)
+           setStudentNumber(userData.studentNumber)
+           setName(userData.name)
       }
     },[])
+
+    useEffect(()=>{
+        if(hostel==='KT Hall'){
+            setItemId(4);
+        }
+        if(hostel==='Chamber of Mines Hall'){
+            setItemId(20);
+        }
+        if(hostel==='Gold Hall'){
+            setAmount(22);
+        }
+    })
 
     return (
         <div className="max-w-md mx-auto p-6  rounded-lg bg-white">
@@ -81,9 +144,20 @@ const MobileMoneyPaymentForm = () => {
                 </div>
                 <button
                     type="submit"
-                    className="w-full py-2 text-green-100 bg-teal-600 rounded-lg hover:bg-teal-700 transition duration-200"
+                    className={`w-full py-2 text-green-100 bg-teal-600 rounded-lg hover:bg-teal-700 transition duration-200 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    disabled={isLoading} 
                 >
-                    Submit Payment
+                    {isLoading ? (
+                       
+                       <span className="flex justify-center items-center">
+                       Loading 
+                       <img src="/images/loader.gif" className="w-7 h-7 ml-2" alt="Loading..." />
+                   </span>
+                   
+                        
+                    ) : (
+                        <span>Submit Payment</span>
+                    )}
                 </button>
             </form>
         </div>

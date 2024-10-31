@@ -25,6 +25,7 @@ const RoomList = () => {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [connection, setConnection] = useState(null);
+
  
   // const [isBooked, setIsBooked] = useState(false);
  
@@ -72,8 +73,6 @@ const RoomList = () => {
 
       var response=await BedService.Book(id);
       await new Promise(resolve => setTimeout(resolve, 2000));
-     console.log("wow" + response.isSuccessful );
-    
        if (response.isSuccessful) {
          setIsLoading(false);
          setIsError(false);
@@ -165,14 +164,9 @@ const RoomList = () => {
 }, []);
 
 
- 
-
-
-
   return (
     <>
-      <div style={{ minHeight: "70vh" }} className="room-list flex flex-wrap ml-8">
-
+      <div style={{ minHeight: "70vh" }} className="w-100 flex flex-wrap pl-5 pr-15  md:pl-10 pr-25 ">
         <>
         {skeleton ? (
           <RoomSkeleton />
@@ -196,8 +190,8 @@ const RoomList = () => {
 
       {showModal && selectedRoom && (
         <form>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-black-900/70">
-            <div className="w-[30%] my-6 mx-auto max-w-6xl">
+          <div className=" justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-black-900/70">
+            <div className="w-[30%] my-6 mx-auto max-w-6xl " style={{  minWidth: "200px" }}>
               <div className="border-0 rounded-lg shadow-lg relative w-full bg-slate-50 outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <span className="text-1xl font-semibold">Choose Bed & Confirm Booking</span>
@@ -225,8 +219,8 @@ const RoomList = () => {
                       alt="Success"
                       className=""
                     />
-                    <p>Booking is Requested!!</p>
-                    <span className="align-center"> Complete payment within the next 48 hours to secure your slot.</span>
+                    <p className="align-center text-sm text-gray-600 ">Bed Requested!!</p>
+                    <span className="align-center text-sm text-gray-600 text-justify-end "> Complete payment within the next 48 hours to secure your slot.</span>
                    </>
                   )}
                    {isError && (
@@ -244,11 +238,8 @@ const RoomList = () => {
 
                   </div>
                   {!isLoading && !isSuccess && !isError && (
-                  <MDBContainer fluid>
-                    <MDBRow className="d-flex justify-content-center align-items-center h-100">
-                      <MDBCol col="12">
-                        <MDBCard className="bg-white mx-auto" style={{ borderRadius: "1rem", maxWidth: "500px" }}>
-                          <MDBCardBody className="p-5 w-100 d-flex flex-column">
+                        <div className="bg-white" style={{ borderRadius: "1rem", maxWidth: "500px" }}>
+                          <div className="p-5 w-100 d-flex flex-column">
                             <p className="text-black mb-3 text-center"> {/* Changed to text-black for visibility */}
                               You are booking{" "}
                               <span className="block">
@@ -342,14 +333,14 @@ const RoomList = () => {
 
                               </>
                             )}
-                          </MDBCardBody>
-                        </MDBCard>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBContainer>
+                          </div>
+                        </div>
+                    
+                 
+               
                   )}
                 </div>
-                <div className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className="flex items-center justify-between md:p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
@@ -359,7 +350,7 @@ const RoomList = () => {
                   </button>
                   {!isLoading && !isSuccess && !isError && selectedBed && (
                   <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     // onClick={() => {
                     //   setShowModal(false);
@@ -373,14 +364,14 @@ const RoomList = () => {
                   
                   {isSuccess && (
                     <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                       onClick={() => {
                       setShowModal(false);
                       navigate("/ConfirmRoomBook");
                      }}
                     >
-                    Proceed to Pay
+                    Pay Now
                     </button>
                   )
                 }
